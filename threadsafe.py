@@ -1,7 +1,6 @@
 import threading
 from concurrent.futures import ThreadPoolExecutor, wait
 
-
 class ThreadSafeCounter:
     lock = threading.Lock()
     def __init__(self):
@@ -21,4 +20,4 @@ with ThreadPoolExecutor() as e:
     futures = [e.submit(count_up, counter) for _ in range(threads)]
     done, not_done = wait(futures)
 
-print(f'{counter.count=:,}')
+print(f'counter.count = {counter.count}')
